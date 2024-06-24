@@ -1,3 +1,3 @@
-from .Board import Board
-from .Piece import Piece
-from .Square import Square
+from . import Board
+from . import Square
+from . import pieces

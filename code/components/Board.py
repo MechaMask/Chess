@@ -1,4 +1,5 @@
 from .Square import Square
+import re
 class Board:
     def __init__(self):
         #a1__position = (0,0)
@@ -33,12 +34,13 @@ class Board:
         return board 
     
     def get_square(self,position):
-        file = position[0].upper()  
-        rank = int(position[1]) 
-        first_ind = rank - 1  
-        second_ind = ord(file) - ord('A') 
-        return self.board[first_ind][second_ind]
-
+        matched = re.search(r"'[A-Ha-h]{1}[1-8]{1}'", position)
+        if matched:    
+            file = position[0].upper()  
+            rank = int(position[1]) 
+            first_ind = rank - 1  
+            second_ind = ord(file) - ord('A') 
+            return self.board[first_ind][second_ind]
     def flip_board(self):
         if self.isflipped:
             self.isflipped = False
