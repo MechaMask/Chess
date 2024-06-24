@@ -33,11 +33,11 @@ class Board:
             board.append(rank_squares)
         return board 
     
-    def get_square(self,position):
-        matched = re.search(r"'[A-Ha-h]{1}[1-8]{1}'", position)
-        if matched:    
-            file = position[0].upper()  
-            rank = int(position[1]) 
+    def get_square(self,square):
+        matched = re.search(r"[A-Ha-h]{1}[1-8]{1}",square)
+        if matched and (len(square) == 2):    
+            file = square[0].upper()  
+            rank = int(square[1]) 
             first_ind = rank - 1  
             second_ind = ord(file) - ord('A') 
             return self.board[first_ind][second_ind]
@@ -47,7 +47,23 @@ class Board:
         else:
             self.isflipped = True 
         return self.isflipped
-    
+    def display(self):
+        grid = ""
+        if (not self.isflipped):
+            for row in reversed(self.board):
+                row_squares = ""
+                for square in row:   
+                    row_squares += f"{square.display()}" 
+                grid += f"{row_squares}\n" 
+            print(grid)
+        else:
+            for row in self.board:
+                row_squares = ""
+                for square in reversed(row):
+                    row_squares += f"{square.display()} "
+                grid += f"{row_squares}\n"
+            print(grid)                
+
     def __str__(self):
         grid = ""
         if (not self.isflipped):

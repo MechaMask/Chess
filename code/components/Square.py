@@ -19,8 +19,9 @@ class Square ():
         return self.position[0]
     def get_rank(self):
         return self.position[1]
+    def display(self):
+        square = f"{" . " if not self.occupied else self.get_piece().display()}"
+        return square
     def __str__(self):
         square = f"{self.get_file()}{self.get_rank()} {self.color if not self.occupied else self.get_piece()}"
         return square
-    
-    

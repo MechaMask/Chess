@@ -1,4 +1,5 @@
 from components.Board import Board
+from components.pieces import Knight
 
 # from components.pieces import *
 
@@ -52,7 +53,12 @@ from components.Board import Board
 
 board = Board()
 print(board)
-print(f"Piece on A2: {board.get_square("A2")}")
-board.flip_board()
+print(f"Piece on A2: {board.get_square("B1")}")
+# board.flip_board()
+k = Knight("White")
+print(f"Created a knight: {k}")
+board.get_square("B1").place_piece(k)
+print(f"Piece on B1: {board.get_square("B1").get_piece()}")
 print(board)
+board.display()
 
