@@ -5,4 +5,4 @@ class Queen(Piece):
       self.color = color
       self.piece_type = "Queen"
     def display(self):
-       return "Q"
+       return "  Q  "

@@ -33,7 +33,17 @@ class Board:
             board.append(rank_squares)
         return board 
     
+    def place_piece(self,piece, square):
+        #TODO should be able to handle chess notation or passing a square
+        if not square.occupied:
+            square.occupied = True
+            square.piece = piece
+
+    def legal_moves(self):
+        pass
+
     def get_square(self,square):
+        #TODO implement this logic in Square class then use it to get the indecices using get_coords
         matched = re.search(r"[A-Ha-h]{1}[1-8]{1}",square)
         if matched and (len(square) == 2):    
             file = square[0].upper()  

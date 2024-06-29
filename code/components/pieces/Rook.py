@@ -5,4 +5,4 @@ class Rook(Piece):
       self.color = color
       self.piece_type = "Rook"
     def display(self):
-       return "R"
+       return "  R  "

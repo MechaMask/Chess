@@ -1,7 +1,7 @@
 from components.Board import Board
-from components.pieces import Knight
+# from components.pieces import Knight
 
-# from components.pieces import *
+from components.pieces import *
 
 
 
@@ -57,8 +57,63 @@ print(f"Piece on A2: {board.get_square("B1")}")
 # board.flip_board()
 k = Knight("White")
 print(f"Created a knight: {k}")
-board.get_square("B1").place_piece(k)
+b1 = board.get_square("B1")
+board.place_piece(k,b1)
 print(f"Piece on B1: {board.get_square("B1").get_piece()}")
 print(board)
 board.display()
+
+for i in range(8):
+    letter = chr(i + ord('A'))
+    board.place_piece(Pawn("White"),board.get_square(f"{letter}2"))
+    board.place_piece(Pawn("Black"),board.get_square(f"{letter}7"))
+
+board.place_piece(Knight("White"),board.get_square("G1"))
+board.place_piece(Knight("Black"),board.get_square("B8"))
+board.place_piece(Knight("Black"),board.get_square("G8"))
+
+board.place_piece(Rook("White"),board.get_square("A1"))
+board.place_piece(Rook("White"),board.get_square("H1"))
+board.place_piece(Rook("Black"),board.get_square("A8"))
+board.place_piece(Rook("Black"),board.get_square("H8"))
+
+board.place_piece(Bishop("White"),board.get_square("C1"))
+board.place_piece(Bishop("White"),board.get_square("F1"))
+board.place_piece(Bishop("Black"),board.get_square("C8"))
+board.place_piece(Bishop("Black"),board.get_square("F8"))
+
+board.place_piece(Queen("White"),board.get_square("D1"))
+board.place_piece(King("White"),board.get_square("E1"))
+board.place_piece(Queen("Black"),board.get_square("D8"))
+board.place_piece(King("Black"),board.get_square("E8"))
+
+
+print(board)
+board.display()
+# print(f"White light square bishop: Color {board.get_square("F1").color}, Square {str(board.get_square("F1"))}")
+# print(f"White dark square bishop: Color {board.get_square("C1").color}, Square {str(board.get_square("C1"))}")
+# print(f"Black light square bishop: Color {board.get_square("C8").color}, Square {str(board.get_square("C8"))}")
+# print(f"Black dark square bishop: Color {board.get_square("f8").color}, Square {str(board.get_square("F8"))}")
+# print(f"White King: Color {board.get_square("E1").color}, Square {str(board.get_square("E1"))}")
+# print(f"Black King: Color {board.get_square("E8").color}, Square {str(board.get_square("E8"))}")
+
+
+
+# Testing out bit representations of the board
+# https://www.chessprogramming.org/Board_Representation
+# https://mayothi.com/nagaskakichess6.html 
+# c = bin(2**64)
+# c = bin(2**64 << 1)
+# inputA = int('0101',2)
+# print ("After shifting in binary: " + bin(inputA << 1))
+# print ("After shifting in binary: " + bin(inputA << 1)
+# print("After shifting in decimal: " + str(inputA << 1))
+# bin(int('0b101',2) ^ int('0b010',2))
+# bin(int('0b101',2) & int('0b010',2))
+# chess =bin(1 << 64)
+# a = int('0x000000000000ff00',16)
+# b=  int('0xffffffffffffffff',16)
+# bin(a & b)[2:].zfill(64)
+# bin(~a & b)[2:].zfill(64)
+# c = bin(2**64 | int('1111111111111',2))
 
