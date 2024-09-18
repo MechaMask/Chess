@@ -5,12 +5,12 @@ def ones(n):
     #returns n number of bits, all set to 1
     return 2**n - 1
 def nthbitone(k):
-    #returns bits with all bits as 0 except the kth bit as 1, with k being 0 >= k >= 63 
+    #returns bits with all bits as 0 except the kth bit as 1, with k being 0 <= k <= 63 
     if k < 64:
         return 1 << k
     return 0
 def nthbitzero(k):
-    #returns all bits as 1 except the kth bit as 0, with k being 0 >= k >= 63
+    #returns all bits as 1 except the kth bit as 0, with k being 0 <= k <= 63
     if k < 64:
         return 0xffffffffffffffff ^ (1<<k)
     return 0xffffffffffffffff
