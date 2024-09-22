@@ -66,6 +66,6 @@ class bitboard:
     def __str__(self) -> str:
         return bin(0xffffffffffffffff-~self.bits)[3:]
     def __repr__(self) -> str:
-        return f"{type(self).__name__}[{self.__str__()}]"
+        return f"{type(self).__name__}(Decimal:{self.bits},Hex:{hex(self.bits)},Binary:{self.__str__()})"
 
 a = bitboard()
