@@ -37,13 +37,14 @@ class bitboard:
         elif type(bits) == str:
             #The left most bit will be considered the most significant bit in case 0b, 0x, or 0o are used
             #otherwise, it will be processed the same as a list of bits -with bits[0] being the least significant bit
+            prefix = {"0b":2,"0o":8,"0x":16}
             some_bits = None
             if bits[0] == "-":
                 raise SyntaxError(f"{type(self)} can't hold negative values, {bits[0]!r}{bits[1:]!r}")
             elif bits[0:2] == "0b" or bits[0:2] == "0x" or bits[0:2] == "0o":
-                some_bits = eval(f"{bits}")
+                some_bits = int(bits,prefix[bits[:2]])
             else:
-                some_bits = eval(f"0b{bits[::-1]}")
+                some_bits = int(f"0b{bits[::-1]}",2)
             if some_bits > MAX_VALUE:
                 raise SyntaxError(f"{type(self)} can contain at most {64} elements")
             elif type(some_bits) == int:
